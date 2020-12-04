@@ -8,14 +8,16 @@
     <!--サイドバー-->
     <transition name="menu">
       <div class="menu" v-show="ActiveBtn">
+        <!-- <transition-group name="list" tag="ul"> -->
           <ul>
-              <li v-bind:class="{'btn_li':ActiveBtn}"><a href="#">項目1</a></li>
-              <li v-bind:class="{'btn_li':ActiveBtn}"><a href="#">項目2</a></li>
-              <li v-bind:class="{'btn_li':ActiveBtn}"><a href="#">項目2</a></li>
-              <li v-bind:class="{'btn_li':ActiveBtn}"><a href="#">項目3</a></li>
-              <li v-bind:class="{'btn_li':ActiveBtn}"><a href="#">項目4</a></li>
-              <li v-bind:class="{'btn_li':ActiveBtn}"><a href="#">項目5</a></li>
+          <li v-show="ActiveBtn"><a href="#">項目1</a></li>
+          <li v-show="ActiveBtn"><a href="#">項目2</a></li>
+          <li v-show="ActiveBtn"><a href="#">項目3</a></li>
+          <li v-show="ActiveBtn"><a href="#">項目4</a></li>
+          <li v-show="ActiveBtn"><a href="#">項目5</a></li>
+          <li v-show="ActiveBtn"><a href="#">項目6</a></li>
           </ul>
+        <!-- </transition-group> -->
       </div>
   </transition>
   </div>
@@ -82,25 +84,36 @@ export default {
 
 /*サイドバー*/
 .menu-enter-active, .menu-leave-active {
-  transition: opacity 0.4s;
+  transition: width 0.5s;
 }
 .menu-enter, .menu-leave-to {
-  opacity: 0;
+  width: 0rem!important;
 }
 .menu-leave, .menu-enter-to{
-  opacity: 1;
+  width: 20rem !important
+}
+
+.menu-enter-active li, .menu-leave-active li {
+  transition: opacity 0.5s;
+  transition-delay: 0.2s;
+}
+.menu-enter li, .menu-leave-to li {
+  opacity: 0 !important;
+}
+.menu-leave li, .menu-enter-to li {
+  opacity: 1 !important
 }
 
 .menu li {
   list-style: none;
   line-height: 1;
   padding: 1rem;
+  opacity: 1;
 }
 
 .menu {
   background-color: rgba(197, 197, 197, 0.671);
   z-index: 30;
-  padding: 2rem 1rem;
   position: fixed;
   width: 20rem;
   height: 80rem;
